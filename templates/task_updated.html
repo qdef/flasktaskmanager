@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+  <title>Task update successful</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+  <h1 style="text-align: center; color: blue"> My Task Manager </h1>
+
+  <h2 style="text-align: center;">Your task has been successfully updated.</h2>
+  
+  <div class="centered">
+    <form action="/">
+      <input type="submit" value="Go to Task Manager" />
+    </form>
+  </div>
+
+  <br>
+
+  {% endblock %}
+

@@ -1,0 +1,41 @@
+body, html {
+    margin: 10;
+    font-family: sans-serif;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+    margin: 10 auto;
+    width: 300px;
+}
+
+table, td, th {
+    border: 1px solid #aaa;
+}
+
+table {
+    border-collapse: collapse;
+    width: 70%;
+}
+
+th {
+    height: 30px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+.centered {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#content {
+    width: 70%;
+}
