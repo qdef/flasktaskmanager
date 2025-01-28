@@ -77,6 +77,6 @@ def task_updated():
 if __name__ == '__main__':
     app.run(debug=True)
     with app.app_context():
-        init_db()
+        # init_db()
         db.create_all()
 
