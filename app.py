@@ -9,7 +9,16 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-db = SQLAlchemy(app)
+
+db = SQLAlchemy()
+
+
+def create_app():
+    with app.app_context():
+        db.init_app(app)
+        db.create_all()
+   
+    return app
 
 
 class Tasks(db.Model):
@@ -71,8 +80,4 @@ def update_task(task_id):
 @app.route('/task_updated/')
 def task_updated():
     return render_template('task_updated.html')
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
 
