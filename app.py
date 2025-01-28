@@ -13,14 +13,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 
 
-def create_app():
-    with app.app_context():
-        db.init_app(app)
-        db.create_all()
-   
-    return app
-
-
 class Tasks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
@@ -84,5 +76,7 @@ def task_updated():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    db.create_all()
+    with app.app_context():
+        init_db()
+        db.create_all()
 
