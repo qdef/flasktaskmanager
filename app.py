@@ -81,3 +81,8 @@ def update_task(task_id):
 def task_updated():
     return render_template('task_updated.html')
 
+
+if __name__ == '__main__':
+    create_app()
+    app.run(debug=True)
+
