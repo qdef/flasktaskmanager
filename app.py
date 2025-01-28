@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
-db = SQLAlchemy()
+db = SQLAlchemy(app)
 
 
 def create_app():
@@ -83,6 +83,6 @@ def task_updated():
 
 
 if __name__ == '__main__':
-    create_app()
     app.run(debug=True)
+    db.create_all()
 
