@@ -1,3 +1,5 @@
+import os
+
 from datetime import datetime
 
 from flask import (
@@ -9,6 +11,11 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+
+db_path = os.path.join(os.path.dirname(__file__), 'taskmanager.db')
+db_uri = 'sqlite:///{}'.format(db_path)
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 
 db = SQLAlchemy(app)
 
