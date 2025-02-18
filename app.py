@@ -3,15 +3,15 @@ import os
 from datetime import datetime
 
 from flask import (
-    Flask, render_template, url_for,
+    Flask, flash, render_template, url_for,
     request, redirect,
 )
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
+app.config['SECRET_KEY'] = 'e$Y$%J*p$i%8$*9$*e%z*5%8$*u8H9sS0$'
 
 db_path = os.path.join(os.path.dirname(__file__), 'taskmanager.db')
 db_uri = 'sqlite:///{}'.format(db_path)
@@ -38,6 +38,7 @@ def index():
         try:
             db.session.add(new_task)
             db.session.commit()
+            flash('New task has been successfully added.')
             return redirect('/')
         except Exception as e:
             return f"An error occurred when adding the task to the database: {e}"
@@ -53,6 +54,7 @@ def delete_task(task_id):
     try: 
         db.session.delete(task_to_delete)
         db.session.commit()
+        flash('Task has been successfully deleted.')
         return redirect('/')
     except Exception as e:
         return f"An error occurred when deleting task #{task_id}: {e}"
@@ -84,6 +86,6 @@ def task_updated():
 if __name__ == '__main__':
     app.run(debug=True)
     with app.app_context():
-        # init_db()
+        # db.init_app(app)
         db.create_all()
 
